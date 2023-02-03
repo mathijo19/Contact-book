@@ -1,0 +1,41 @@
+﻿<Window x:Class="Kontaktbuch.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kontaktbuch"  
+        Title="Kontaktverwaltung"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        mc:Ignorable="d">
+
+    <Grid HorizontalAlignment="Center" Height="434" VerticalAlignment="Center" Width="800">
+        <Grid HorizontalAlignment="Left" Height="206" Margin="20,218,0,0" VerticalAlignment="Top" Width="780">
+            <Button Content="Kontakt löschen" HorizontalAlignment="Left" Height="28" Margin="291,167,0,0" VerticalAlignment="Top" Width="142" Click="deletecontact"/>
+            <Button Content="Änderung speichern" HorizontalAlignment="Left" Height="31" Margin="585,70,0,0" VerticalAlignment="Top" Width="162" Click="savechanges" RenderTransformOrigin="0.887,0.539"/>
+            <TextBox HorizontalAlignment="Left" x:Name ="displayforname" Height="25" Margin="188,38,0,0" TextWrapping="Wrap" Text="Vorname" VerticalAlignment="Top" Width="160"/>
+            <TextBox HorizontalAlignment="Left" x:Name="displaysurname" Height="25" Margin="371,38,0,0" TextWrapping="Wrap" Text="Nachname" VerticalAlignment="Top" Width="161"/>
+            <TextBox HorizontalAlignment="Left" x:Name="displayemail" Height="25" Margin="188,0,0,0" TextWrapping="Wrap" Text="E-Mail" VerticalAlignment="Center" Width="160"/>
+            <TextBox HorizontalAlignment="Left" x:Name="displaynum" Height="25" Margin="371,0,0,0" TextWrapping="Wrap" Text="Telefonnummer" VerticalAlignment="Center" Width="161"/>
+            <Image HorizontalAlignment="Left" x:Name ="imagePicture" Height="144" Margin="0,10,0,0" VerticalAlignment="Top" Width="146" Source="C:\Users\mgemke\Desktop\data\bilder\standard.jfif"/>
+            <Button Content="Bild ändern" HorizontalAlignment="Left" Height="28" Margin="0,167,0,0" VerticalAlignment="Top" Width="144" Click="Buttonchangepicture"/>
+            <Button Content="Kontakt hinzufügen" HorizontalAlignment="Left" x:Name="addname" Height="28" Margin="585,167,0,0" VerticalAlignment="Top" Width="162" Click="openwindow"/>
+            <Label Content="" HorizontalAlignment="Left" x:Name="erroremail" Height="36" Margin="188,126,0,0" VerticalAlignment="Top" Width="160" Foreground="Red"/>
+            <Label Content="" HorizontalAlignment="Left" x:Name ="errorforname" Height="35" Margin="188,66,0,0" VerticalAlignment="Top" Width="172" Foreground="Red"/>
+            <Label Content="" HorizontalAlignment="Left" x:Name ="errorsurname" Height="33" Margin="372,66,0,0" VerticalAlignment="Top" Width="160" Foreground="Red"/>
+            <Label Content="" HorizontalAlignment="Left" x:Name ="errornum" Height="31" Margin="371,123,0,0" VerticalAlignment="Top" Width="172" Foreground="Red"/>
+        </Grid>
+        <TextBlock TextWrapping="Wrap" Margin="358,10,358,399"><Run Language="de-de" Text="Kontakte" FontSize="20" Foreground="{StaticResource PrimaryHueLightBrush}"/></TextBlock>
+        <Path Data="M0,217 L599,218" Fill="#FFF4F4F5" HorizontalAlignment="Center" Height="2" Stroke="Black" Stretch="Fill" VerticalAlignment="Center" Width="800"/>
+        <DataGrid Margin="20,40,20,238" Name ="datagridcontacts" d:ItemsSource="{Binding Contacts}" SelectionChanged="DataGrid_SelectionChanged" IsReadOnly="True" AutoGenerateColumns="false">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Vorname" Binding="{Binding Forname}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Nachname" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="E-Mail" Binding="{Binding Email}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Telefonnummer" Binding="{Binding Phonenum}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
